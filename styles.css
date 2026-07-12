@@ -1,13 +1,27 @@
 :root {
   color-scheme: dark;
-  --bg: #071120;
-  --panel: #0f1b2d;
-  --panel-2: #16253a;
-  --text: #f4f7fb;
-  --muted: #8da0bc;
-  --accent: #5b7cff;
-  --accent-2: #2dd4bf;
-  --border: rgba(255, 255, 255, 0.08);
+  --bg: #050210;
+  --panel: rgba(10, 11, 24, 0.96);
+  --panel-2: rgba(18, 16, 35, 0.96);
+  --panel-glow: rgba(85, 87, 211, 0.18);
+
+  --text: #eef0ff;
+  --muted: #9a93b3;
+  --muted-2: #7d7aa9;
+
+  /* Dark rainbow night palette */
+  --violet: #9d56ff;
+  --magenta: #e04ecf;
+  --indigo: #5566ff;
+  --cyan: #3de7ff;
+  --teal: #3fd9c9;
+  --emerald: #5be48c;
+  --amber: #ff9d55;
+
+  --accent: #9d56ff;
+  --accent-2: #3de7ff;
+  --accent-3: #e04ecf;
+  --border: rgba(255,255,255,0.08);
 }
 
 * {
@@ -17,9 +31,14 @@
 body {
   margin: 0;
   font-family: Inter, "Segoe UI", Roboto, sans-serif;
-  background: radial-gradient(circle at top, #16253a, var(--bg));
-  color: var(--text);
   min-height: 100vh;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 15% 10%, rgba(157, 86, 255, 0.18), transparent 18%),
+    radial-gradient(circle at 80% 18%, rgba(61, 231, 255, 0.14), transparent 22%),
+    radial-gradient(circle at 60% 75%, rgba(224, 78, 207, 0.16), transparent 26%),
+    radial-gradient(circle at 20% 85%, rgba(91, 228, 140, 0.14), transparent 18%),
+    var(--bg);
 }
 
 button,
@@ -34,34 +53,41 @@ input {
 }
 
 .sidebar {
-  background: rgba(7, 17, 32, 0.9);
+  background: linear-gradient(180deg, rgba(8, 9, 20, 0.96), rgba(16, 11, 36, 0.95));
   border-right: 1px solid var(--border);
-  padding: 24px 18px;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02), 0 0 40px rgba(77, 74, 160, 0.08);
+  padding: 28px 22px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 28px;
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
 
 .brand-badge {
-  width: 44px;
-  height: 44px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   display: grid;
   place-items: center;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  background: radial-gradient(circle at top left, var(--magenta), var(--violet));
+  color: white;
   font-weight: 800;
+  box-shadow: 0 0 20px rgba(157, 86, 255, 0.35);
 }
 
 .brand h1,
 .brand p,
 .sidebar-section h2 {
   margin: 0;
+}
+
+.brand h1 {
+  font-size: 1.6rem;
 }
 
 .brand p,
@@ -73,51 +99,62 @@ input {
 .sidebar-section {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
 .contact {
   border: 1px solid transparent;
-  background: transparent;
+  background: rgba(255,255,255,0.03);
   color: var(--text);
-  border-radius: 14px;
-  padding: 11px 12px;
+  border-radius: 18px;
+  padding: 14px 14px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   cursor: pointer;
   text-align: left;
+  transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+
+.contact:hover {
+  transform: translateX(2px);
+  background: rgba(255,255,255,0.05);
 }
 
 .contact.active {
-  background: rgba(91, 124, 255, 0.16);
-  border-color: rgba(91, 124, 255, 0.3);
+  background: linear-gradient(135deg, rgba(157, 86, 255, 0.22), rgba(61, 231, 255, 0.14));
+  border-color: rgba(157, 86, 255, 0.35);
+  box-shadow: 0 0 16px rgba(157, 86, 255, 0.12);
 }
 
 .avatar {
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   display: grid;
   place-items: center;
-  background: var(--panel-2);
+  background: linear-gradient(135deg, rgba(24, 22, 43, 1), rgba(48, 42, 79, 0.95));
+  color: var(--text);
   font-weight: 700;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: inset 0 0 10px rgba(255,255,255,0.04);
 }
 
 .chat-panel {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  background: linear-gradient(180deg, rgba(8, 8, 22, 0.98), rgba(10, 9, 29, 0.98));
 }
 
 .chat-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 18px 24px;
+  padding: 24px 30px;
   border-bottom: 1px solid var(--border);
-  background: rgba(15, 27, 45, 0.85);
-  backdrop-filter: blur(10px);
+  background: rgba(11, 11, 26, 0.94);
+  backdrop-filter: blur(14px);
 }
 
 .chat-header h2,
@@ -125,82 +162,102 @@ input {
   margin: 0;
 }
 
+.chat-header h2 {
+  font-size: 1.4rem;
+}
+
 .chat-header p {
   color: var(--muted);
-  margin-top: 2px;
+  margin-top: 4px;
 }
 
 .icon-btn {
   border: 0;
-  width: 42px;
-  height: 42px;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
-  background: var(--panel-2);
+  background: linear-gradient(135deg, rgba(24, 23, 53, 0.96), rgba(40, 36, 69, 0.96));
   color: var(--text);
   cursor: pointer;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.06), 0 12px 30px rgba(65, 57, 148, 0.12);
 }
 
 .messages {
   flex: 1;
-  padding: 24px;
+  padding: 28px 30px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 18px;
 }
 
 .message {
   max-width: 70%;
-  padding: 12px 14px;
-  border-radius: 16px 16px 16px 4px;
-  background: var(--panel);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.16);
+  padding: 16px 18px;
+  border-radius: 20px 20px 20px 6px;
+  background: rgba(18, 18, 42, 0.94);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+  border: 1px solid rgba(255,255,255,0.05);
 }
 
 .message.me {
   align-self: flex-end;
-  border-radius: 16px 16px 4px 16px;
-  background: linear-gradient(135deg, var(--accent), #7c8cff);
+  border-radius: 20px 20px 6px 20px;
+  background: linear-gradient(135deg, rgba(157, 86, 255, 0.22), rgba(61, 231, 255, 0.18));
+  border-color: rgba(61, 231, 255, 0.18);
+  color: #f8faff;
 }
 
 .message p {
   margin: 0;
-  line-height: 1.5;
+  line-height: 1.65;
 }
 
 .message small {
   display: block;
-  margin-top: 6px;
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.78rem;
+  margin-top: 10px;
+  color: rgba(238, 240, 255, 0.68);
+  font-size: 0.8rem;
 }
 
 .composer {
   display: flex;
-  gap: 12px;
-  padding: 16px 24px 24px;
+  gap: 14px;
+  padding: 20px 30px 28px;
   border-top: 1px solid var(--border);
-  background: rgba(15, 27, 45, 0.95);
+  background: rgba(12, 12, 29, 0.96);
+  backdrop-filter: blur(12px);
 }
 
 .composer input {
   flex: 1;
-  padding: 14px 16px;
-  border: 1px solid var(--border);
+  padding: 16px 20px;
+  border: 1px solid rgba(255,255,255,0.08);
   border-radius: 999px;
-  background: var(--panel-2);
+  background: rgba(17, 16, 37, 0.95);
   color: var(--text);
   outline: none;
 }
 
+.composer input::placeholder {
+  color: rgba(238, 240, 255, 0.5);
+}
+
 .composer button {
   border: 0;
-  padding: 0 18px;
+  padding: 0 22px;
   border-radius: 999px;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  background: linear-gradient(135deg, var(--violet), var(--cyan), var(--magenta));
   color: white;
   font-weight: 700;
   cursor: pointer;
+  box-shadow: 0 10px 24px rgba(157, 86, 255, 0.18);
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid rgba(61, 231, 255, 0.55);
+  outline-offset: 2px;
 }
 
 @media (max-width: 860px) {
@@ -210,6 +267,10 @@ input {
 
   .sidebar {
     display: none;
+  }
+
+  .chat-panel {
+    height: auto;
   }
 
   .message {
