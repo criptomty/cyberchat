@@ -4,7 +4,7 @@ const inputEl = document.getElementById('messageInput');
 
 const initialMessages = [
   {
-    text: 'Hi! I am Alicia. How can I help you today?',
+    text: 'Hi! I am Giang. How can I help you today?',
     self: false,
     time: '09:41',
   },
@@ -42,6 +42,6 @@ composerEl.addEventListener('submit', (event) => {
   inputEl.value = '';
 
   window.setTimeout(() => {
-    addMessage('That sounds great! I can help you shape this interface further.', false);
+    addMessage('I dont know that yet, but I am learning..', false);
   }, 700);
 });
