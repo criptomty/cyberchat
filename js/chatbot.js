@@ -1,5 +1,6 @@
 (function (global) {
   const defaultKnowledge = {
+    catalogLabel: 'products',
     products: {
       'iphone 17': {
         price: '$999',
@@ -49,6 +50,11 @@
     return foundIntent ? foundIntent[0] : '';
   }
 
+  function isCatalogRequest(message) {
+    const normalized = normalizeText(message);
+    return normalized.includes('product') || normalized.includes('products') || normalized.includes('services') || normalized.includes('catalog') || normalized.includes('list');
+  }
+
   function generateResponse(message, knowledge = defaultKnowledge) {
     const greetings = knowledge.greetings || defaultKnowledge.greetings;
     const products = knowledge.products || defaultKnowledge.products;
@@ -58,6 +64,12 @@
     const product = detectProduct(message, products);
     const intent = detectIntent(message, intents);
 
+    if (isCatalogRequest(message)) {
+      const catalogLabel = knowledge.catalogLabel || defaultKnowledge.catalogLabel;
+      const productNames = Object.keys(products).map(formatProductName);
+      return `Here are our ${catalogLabel}: ${productNames.join(', ')}.`;
+    }
+
     if (greeting && product && intent) {
       const productInfo = products[product];
       if (intent === 'price') {
@@ -65,6 +77,9 @@
       }
       if (intent === 'stock') {
         return `${capitalize(greeting)}! The ${formatProductName(product)} is ${productInfo.stock.toLowerCase()}.`;
+      }
+      if (intent === 'duration') {
+        return `${capitalize(greeting)}! The ${formatProductName(product)} lasts ${productInfo.duration}.`;
       }
       if (intent === 'about') {
         return `${capitalize(greeting)}! ${formatProductName(product)}: ${productInfo.description}.`;
@@ -80,6 +95,9 @@
       const productInfo = products[product];
       if (intent === 'stock') {
         return `The ${formatProductName(product)} is ${productInfo.stock.toLowerCase()}.`;
+      }
+      if (intent === 'duration') {
+        return `The ${formatProductName(product)} lasts ${productInfo.duration}.`;
       }
       if (intent === 'about') {
         return `${formatProductName(product)}: ${productInfo.description}.`;
