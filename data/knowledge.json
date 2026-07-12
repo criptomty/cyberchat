@@ -1,0 +1,37 @@
+{
+  "products": {
+    "iphone 17": {
+      "price": "$999",
+      "stock": "Available",
+      "description": "Latest Apple smartphone"
+    },
+    "galaxy s26": {
+      "price": "$899",
+      "stock": "Available",
+      "description": "Samsung smartphone"
+    }
+  },
+  "intents": {
+    "price": [
+      "price",
+      "cost",
+      "how much"
+    ],
+    "stock": [
+      "stock",
+      "available"
+    ],
+    "about": [
+      "about",
+      "tell me about",
+      "details",
+      "info"
+    ]
+  },
+  "greetings": [
+    "hello",
+    "hi",
+    "hey",
+    "hola"
+  ]
+}
