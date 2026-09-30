@@ -10,7 +10,7 @@
       time: '09:41',
     },
     {
-      text: 'I want a full-window chat experience that feels insane.',
+      text: 'Start askin for Products and then you can ask for Prices, in the URL you can type https://criptomty.github.io/cyberchat/?client=spa or https://criptomty.github.io/cyberchat/?client=phone-store.',
       self: true,
       time: '09:42',
     },
