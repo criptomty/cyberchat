@@ -18,6 +18,13 @@ CyberChat is a frontend-only chatbot interface built with HTML, CSS and vanilla 
 - Dynamic knowledge loading from JSON
 - Works directly on GitHub Pages with no dependencies
 
+## Queries
+Start askin for Products and then you can ask for Prices, 
+ URL you can type 
+ https://criptomty.github.io/cyberchat/?client=spa 
+ https://criptomty.github.io/cyberchat/?client=phone-store.'
+
+
 ## Example questions
 
 You can try questions like:
