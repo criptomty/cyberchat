@@ -34,16 +34,10 @@
     });
   }
 
-  function loadKnowledge() {
-    return fetch('./data/knowledge.json')
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Unable to load chatbot knowledge');
-        }
-        return response.json();
-      })
-      .then((data) => {
-        chatbot = new Chatbot(data);
+  function initializeChatbot() {
+    loadClient()
+      .then((knowledge) => {
+        chatbot = new Chatbot(knowledge);
       })
       .catch(() => {
         chatbot = new Chatbot();
@@ -75,7 +69,7 @@
       handleUserMessage(text);
     });
 
-    loadKnowledge();
+    initializeChatbot();
   }
 
   init();

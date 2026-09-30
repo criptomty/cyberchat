@@ -1,0 +1,39 @@
+{
+  "catalogLabel": "services",
+  "products": {
+    "massage": {
+      "price": "$50",
+      "duration": "60 minutes",
+      "description": "Relaxing full-body massage"
+    },
+    "hair treatment": {
+      "price": "$40",
+      "duration": "45 minutes",
+      "description": "Rejuvenating salon treatment"
+    }
+  },
+  "intents": {
+    "price": [
+      "price",
+      "cost",
+      "how much"
+    ],
+    "duration": [
+      "duration",
+      "how long",
+      "time"
+    ],
+    "about": [
+      "about",
+      "tell me about",
+      "details",
+      "info"
+    ]
+  },
+  "greetings": [
+    "hello",
+    "hi",
+    "hey",
+    "hola"
+  ]
+}
